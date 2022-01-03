@@ -1,0 +1,80 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<div style="background-color: gray;"
+fxLayoutAlign="space-between center">
+<div>
+<h1 class="display-2">
+  Company Name
+</h1>
+</div>
+<div>
+  <span>
+    {{user}}
+  </span>
+  <span>
+    <!-- <mat-icon>home</mat-icon> -->
+    jkxsnaj
+  </span>
+</div>
+</div>
+<button type="button" (click)="openDialog()" class="btn">Delete</button>
+<p *ngIf="datasaved" ngClass="Success">
+  Record Saved Sucessfully !
+</p>
+<form [formGroup]='dataForm' (ngSubmit)="OnFormSubmit()">
+  <table class="table">
+    <tr>
+      <td>Task Name:</td>
+      <td>
+        <input formControlName="name">
+      </td>
+    </tr>
+    <tr>
+      <td>Project:</td>
+      <td>
+        <input formControlName="project">
+      </td>
+    </tr>
+    <tr>
+      <td>comments:</td>
+      <td>
+        <input formControlName="comments">
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <button [disabled]="dataForm.invalid" class="btn btn-success">Submit</button>
+      </td>
+    </tr>
+  </table>
+</form>
+<h1>
+  Company Name
+</h1>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Task ID</th>
+      <th scope="col">Task Name</th>
+      <th scope="col">Project</th>
+      <th scope="col">Comment</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bk of softData | async">
+        <td scope="row">{{bk.id}}</td>
+        <td scope="row">{{bk.name}}</td>
+        <td scope="row">{{bk.project}}</td>
+        <td scope="row">{{bk.comments}}</td>
+        <td><button type="button" (click)="datatoedit(bk.id)" class="btn btn-primary">Edit</button>
+          <td><button type="button" (click)="dataDelete(bk.id)" class="btn btn-danger">Delete</button>
+        </tr>
+      </tbody>
+</table>
+<router-outlet></router-outlet>
